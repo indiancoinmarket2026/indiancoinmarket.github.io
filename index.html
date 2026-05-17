@@ -1,57 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saddam Coin Bazar</title>
+    <title>SADDAM COINS BAZAR</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             text-align: center;
         }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-top: 5px solid #D4AF37;
+        .header {
+            background-color: #111;
+            color: #fff;
+            padding: 20px;
+            position: relative;
         }
-        h1 {
-            color: #333;
+        .header h1 {
+            color: #ffcc00;
+            margin: 5px 0;
+            font-size: 24px;
+            letter-spacing: 1px;
         }
-        p {
-            color: #666;
-            font-size: 18px;
+        .subtitle {
+            color: #ffcc00;
+            font-size: 12px;
+            margin-bottom: 15px;
         }
-        .welcome-note {
-            background: #fff9e6;
+        .badge-container {
+            margin-top: 10px;
+        }
+        .badge-sell {
+            background-color: #00cc66;
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            border-radius: 3px;
+            text-decoration: none;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .badge-blog {
+            background-color: #ff3300;
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .profile-section {
+            margin: 30px auto;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ffcc00;
+            object-fit: cover;
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .search-container {
+            margin: 20px auto;
+            max-width: 90%;
+            width: 400px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .search-hint {
+            font-size: 11px;
+            color: #888;
+            margin-top: 5px;
+        }
+        .database-text {
+            margin-top: 40px;
+            color: #444;
+            font-size: 14px;
+            padding: 0 20px;
+        }
+        .footer {
+            background-color: #222;
+            color: #aaa;
             padding: 15px;
-            border-left: 5px solid #D4AF37;
-            text-align: left;
-            margin-top: 20px;
-            border-radius: 5px;
+            font-size: 11px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .footer strong {
+            color: #ffcc00;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Welcome to Saddam Coin Bazar</h1>
-        <p>Old Indian Coins and Rare Collections Database</p>
-        
-        <div class="welcome-note">
-            <strong>Bhai, Aapka Swagat Hai!</strong><br>
-            Apne purane coins ke daam aur details janne ke liye niche kone me diye gaye AI Chatbot se baat kijiye.
+    <div class="header">
+        <h1>SADDAM COINS BAZAR</h1>
+        <div class="subtitle">Numismatics Expert & Digital Creator</div>
+        <div class="badge-container">
+            <a href="#" class="badge-sell">Sell Coin</a>
+            <a href="#" class="badge-blog">📚 Blog</a>
         </div>
+    </div>
+
+    <div class="profile-section">
+        <img class="profile-img" src="https://raw.githubusercontent.com/indiancoinmarket2026/indiancoinmarket2026.github.io/main/beti.jpg" alt="Meri Beti">
+        <div class="quote">"Meri beti, meri prerna"</div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="Sikka search karein (e.g. 1985 H, Vaishno Devi)...">
+        <div class="search-hint">Login ki zarurat nahi hai. Seedha search karein.</div>
+    </div>
+
+    <div class="database-text">
+        Bhagalpur aur Banka ke sabse bade database mein search karein.
+    </div>
+
+    <div class="footer">
+        <strong>SADDAM MD SADDAM</strong><br>
+        Bihar (Bhagalpur & Banka) Regional Database<br>
+        © 2026 "ONLINE KAMAI KI MASTER GUIDE" Project
     </div>
 
     <script>
       (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="rvom3Sd33J6zgi1Y0-9G6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
     </script>
-    </body>
+
+</body>
 </html>
