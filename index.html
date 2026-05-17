@@ -220,42 +220,49 @@
         </div>
     </div>
 
-    <div class="footer">
-        <strong>SADDAM MD SADDAM</strong><br>
-        Bihar (Bhagalpur & Banka) Regional Database<br>
-        © 2026 "ONLINE KAMAI KI MASTER GUIDE" Project
-    </div>
-
-    <script>
-        function filterCoins() {
-            let input = document.getElementById('coinSearch').value.toLowerCase();
-            let cards = document.getElementsByClassName('coin-card');
-            
-            for (let i = 0; i < cards.length; i++) {
-                let coinName = cards[i].getAttribute('data-name');
-                if (coinName.includes(input)) {
-                    cards[i].classList.remove('hidden');
-                } else {
-                    cards[i].classList.add('hidden');
-                }
-            }
+    <div class="footer"> <script>
+// 🔎 SEARCH FUNCTION
+function filterCoins() {
+    let input = document.getElementById('coinSearch').value.toLowerCase();
+    let cards = document.getElementsByClassName('coin-card');
+    
+    for (let i = 0; i < cards.length; i++) {
+        let coinName = cards[i].getAttribute('data-name');
+        if (coinName.includes(input)) {
+            cards[i].classList.remove('hidden');
+        } else {
+            cards[i].classList.add('hidden');
         }
+    }
+}
     </script>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    <script>
+// 🔎 COINS DATA (Hardcoded - No Firebase)
+const coinsData = [
+    { name: "1 Rupee 1985 (H Mark)", mint: "Heaton Press", tag: "RARE", price: "₹500 - ₹2,500" },
+    { name: "5 Rupee (Vaishno Devi)", mint: "Multiple", tag: "", price: "₹500 - ₹2,000" },
+    { name: "25 Paise (Rhino)", mint: "Any Mint", tag: "", price: "₹300 - ₹1,200" }
+];
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCL7WCpon9zMwXIPKXVJgmBJy5i4SAiufc",
-  authDomain: "saddam-coin-bajar.firebaseapp.com",
-  projectId: "saddam-coin-bajar",
-  storageBucket: "saddam-coin-bajar.firebasestorage.app",
-  messagingSenderId: "579582174932",
-  appId: "1:579582174932:web:3f8469d68a073190f9bd41"
-};
+function loadCoins() {
+    const container = document.querySelector(".coin-container");
+    
+    coinsData.forEach((coin) => {
+        const coinHTML = `
+          <div class="coin-card" data-name="${coin.name.toLowerCase()}">
+            <span class="rare-badge">${coin.tag}</span>
+            <div class="coin-title">${coin.name}</div>
+            <div class="coin-meta">Mint: ${coin.mint}</div>
+            <div class="coin-price">Kimat: ${coin.price}</div>
+            <a href="https://wa.me/91XXXXXXXXXX" class="btn-whatsapp">💰 Apna Coin Beche</a>
+          </div>
+        `;
+        container.innerHTML += coinHTML;
+    });
+}
 
-const app = initializeApp(firebaseConfig);
-</script>
+window.addEventListener('DOMContentLoaded', loadCoins);
+    </script>    
 
 </body>
 </html>
