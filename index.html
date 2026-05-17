@@ -34,21 +34,40 @@
         .badge-sell {
             background-color: #00cc66;
             color: white;
-            padding: 5px 10px;
+            padding: 6px 12px;
             font-weight: bold;
-            border-radius: 3px;
+            border-radius: 4px;
             text-decoration: none;
-            margin-right: 10px;
-            font-size: 14px;
+            margin-right: 8px;
+            font-size: 13px;
+            display: inline-block;
         }
         .badge-blog {
             background-color: #ff3300;
             color: white;
-            padding: 5px 10px;
+            padding: 6px 12px;
             font-weight: bold;
-            border-radius: 3px;
+            border-radius: 4px;
             text-decoration: none;
-            font-size: 14px;
+            margin-right: 8px;
+            font-size: 13px;
+            display: inline-block;
+        }
+        .badge-ai {
+            background-color: #007bff;
+            color: white;
+            padding: 6px 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         .profile-section {
             margin: 30px auto;
@@ -84,12 +103,72 @@
             color: #888;
             margin-top: 5px;
         }
-        .database-text {
-            margin-top: 40px;
-            color: #444;
+        .coin-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .coin-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+            width: 250px;
+            text-align: left;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .coin-card.hidden {
+            display: none;
+        }
+        .rare-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+        .coin-placeholder {
+            width: 100%;
+            height: 130px;
+            background: #eee;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .coin-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .coin-meta {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .coin-price {
             font-size: 14px;
-            padding: 0 20px;
-            margin-bottom: 30px;
+            color: green;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .btn-whatsapp {
+            display: block;
+            background: #ff9900;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
         }
         .footer {
             background-color: #222;
@@ -98,7 +177,7 @@
             font-size: 11px;
             width: 100%;
             box-sizing: border-box;
-            margin-top: 40px;
+            margin-top: 50px;
         }
         .footer strong {
             color: #ffcc00;
@@ -113,6 +192,7 @@
         <div class="badge-container">
             <a href="#" class="badge-sell">Sell Coin</a>
             <a href="#" class="badge-blog">📚 Blog</a>
+            <a href="https://www.chatbase.co/chatbot-iframe/rvom3Sd33J6zgi1Y0-9G6" target="_blank" class="badge-ai">🤖 Ask AI Bot</a>
         </div>
     </div>
 
@@ -122,12 +202,35 @@
     </div>
 
     <div class="search-container">
-        <input type="text" class="search-box" placeholder="Sikka search karein (e.g. 1985 H, Vaishno Devi)...">
+        <input type="text" id="coinSearch" class="search-box" onkeyup="filterCoins()" placeholder="Sikka search karein (e.g. 1985 H, Vaishno Devi)...">
         <div class="search-hint">Login ki zarurat nahi hai. Seedha search karein.</div>
     </div>
 
-    <div class="database-text">
-        Bhagalpur aur Banka ke sabse bade database mein search karein.
+    <div class="coin-container">
+        <div class="coin-card" data-name="1 rupee 1985 h mark heaton press rare">
+            <span class="rare-badge">RARE</span>
+            <div class="coin-placeholder"></div>
+            <div class="coin-title">1 Rupee 1985 (H Mark)</div>
+            <div class="coin-meta">Mint: Heaton Press</div>
+            <div class="coin-price">Kimat: ₹500 - ₹2,500</div>
+            <a href="https://wa.me/91XXXXXXXXXX" class="btn-whatsapp">💰 Apna Coin Beche</a>
+        </div>
+
+        <div class="coin-card" data-name="5 rupee vaishno devi multiple">
+            <div class="coin-placeholder"></div>
+            <div class="coin-title">5 Rupee (Vaishno Devi)</div>
+            <div class="coin-meta">Mint: Multiple</div>
+            <div class="coin-price">Kimat: ₹500 - ₹2,000</div>
+            <a href="https://wa.me/91XXXXXXXXXX" class="btn-whatsapp">💰 Apna Coin Beche</a>
+        </div>
+
+        <div class="coin-card" data-name="25 paise rhino any mint">
+            <div class="coin-placeholder"></div>
+            <div class="coin-title">25 Paise (Rhino)</div>
+            <div class="coin-meta">Mint: Any Mint</div>
+            <div class="coin-price">Kimat: ₹300 - ₹1,200</div>
+            <a href="https://wa.me/91XXXXXXXXXX" class="btn-whatsapp">💰 Apna Coin Beche</a>
+        </div>
     </div>
 
     <div class="footer">
@@ -137,7 +240,19 @@
     </div>
 
     <script>
-      (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="rvom3Sd33J6zgi1Y0-9G6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+        function filterCoins() {
+            let input = document.getElementById('coinSearch').value.toLowerCase();
+            let cards = document.getElementsByClassName('coin-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let coinName = cards[i].getAttribute('data-name');
+                if (coinName.includes(input)) {
+                    cards[i].classList.remove('hidden');
+                } else {
+                    cards[i].classList.add('hidden');
+                }
+            }
+        }
     </script>
 
 </body>
