@@ -17,7 +17,7 @@
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
             color: white;
             padding: 20px;
             text-align: center;
@@ -27,6 +27,7 @@
         header h1 {
             font-size: 32px;
             margin-bottom: 5px;
+            color: #ffcc00;
         }
 
         header p {
@@ -55,7 +56,7 @@
 
         .btn-primary {
             background: white;
-            color: #667eea;
+            color: #182848;
         }
 
         .btn-primary:hover {
@@ -71,12 +72,33 @@
 
         .btn-secondary:hover {
             background: white;
-            color: #667eea;
+            color: #182848;
+        }
+
+        /* 🌸 PROFILE SECTION (MERI BETI) 🌸 */
+        .profile-section {
+            margin: 25px auto;
+            text-align: center;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ffcc00;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            margin-top: 8px;
+            font-size: 15px;
+            font-weight: 500;
         }
 
         .search-container {
             max-width: 1200px;
-            margin: 30px auto;
+            margin: 20px auto;
             padding: 0 20px;
         }
 
@@ -88,7 +110,7 @@
         input[type="text"] {
             flex: 1;
             padding: 12px;
-            border: 2px solid #ddd;
+            border: 2px solid #4b6cb7;
             border-radius: 8px;
             font-size: 14px;
             font-family: 'Poppins', sans-serif;
@@ -96,7 +118,7 @@
 
         input[type="text"]:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #ffcc00;
         }
 
         .coin-container {
@@ -115,6 +137,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
             position: relative;
+            border-top: 4px solid #ffcc00;
         }
 
         .coin-card:hover {
@@ -135,6 +158,7 @@
 
         .coin-body {
             padding: 20px;
+            text-align: left;
         }
 
         .rare-badge {
@@ -155,7 +179,7 @@
         }
 
         .coin-title {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
             color: #333;
             margin-bottom: 8px;
@@ -168,10 +192,14 @@
         }
 
         .coin-price {
-            font-size: 14px;
-            color: #667eea;
-            font-weight: 600;
-            margin-bottom: 15px;
+            font-size: 15px;
+            color: #1b5e20;
+            font-weight: bold;
+            margin-bottom: 12px;
+            background: #e8f5e9;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
         }
 
         .btn-whatsapp {
@@ -188,15 +216,16 @@
             border: none;
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
 
         .btn-whatsapp:hover {
-            background: #1eaa4f;
+            background: #1ea84f;
             transform: translateY(-2px);
         }
 
         .footer {
-            background: #333;
+            background: #111;
             color: white;
             text-align: center;
             padding: 30px 20px;
@@ -207,13 +236,17 @@
             margin: 8px 0;
             font-size: 14px;
         }
+        .footer strong {
+            color: #ffcc00;
+        }
 
         .loading {
             text-align: center;
             padding: 40px 20px;
-            color: #667eea;
+            color: #4b6cb7;
             font-weight: 600;
             font-size: 18px;
+            grid-column: 1 / -1;
         }
 
         .no-coins {
@@ -221,22 +254,20 @@
             padding: 40px 20px;
             color: #999;
             font-size: 16px;
+            grid-column: 1 / -1;
         }
 
         @media (max-width: 768px) {
             header h1 {
                 font-size: 24px;
             }
-
             .coin-container {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
                 gap: 15px;
             }
-
             .header-buttons {
                 gap: 8px;
             }
-
             .btn {
                 padding: 8px 16px;
                 font-size: 12px;
@@ -245,26 +276,27 @@
     </style>
 </head>
 <body>
+
     <header>
         <h1>💰 SADDAM COINS BAZAR</h1>
         <p>Numismatics Expert & Digital Creator</p>
         <div class="header-buttons">
-            <a href="#" class="btn btn-primary">🛍️ Browse Coins</a>
-            <a href="upload.html" class="btn btn-secondary">📤 Upload Coin</a>
-            <a href="#" class="btn btn-secondary">💬 Ask AI Bot</a>
+            <a href="#" class="btn btn-primary">📸 Browse Coins</a>
+            <a href="upload.html" class="btn btn-secondary">📥 Upload Coin</a>
+            <button onclick="window.chatbase('open')" class="btn btn-secondary">🤖 Ask AI Bot</button>
         </div>
     </header>
 
+    <div class="profile-section">
+        <img class="profile-img" src="https://raw.githubusercontent.com/indiancoinmarket2026/indiancoinmarket2026.github.io/main/beti.jpg" alt="Meri Beti">
+        <div class="quote">"Meri beti, meri prerna"</div>
+    </div>
+
     <div class="search-container">
         <div class="search-box">
-            <input 
-                type="text" 
-                id="coinSearch" 
-                placeholder="Search coins... (e.g., 1985, Rupee, Rare)" 
-                onkeyup="filterCoins()"
-            >
+            <input type="text" id="coinSearch" placeholder="Search coins... (e.g., 1985, Rupee, Rare)" onkeyup="filterCoins()">
         </div>
-        <p style="font-size: 12px; color: #999; margin-top: 8px;">💡 Search by name, year, or mint</p>
+        <p style="font-size: 12px; color: #999; margin-top: 8px;">💡 Search by name, year, or mint | Bhagalpur & Banka Regional Database</p>
     </div>
 
     <div class="coin-container" id="coinContainer">
@@ -272,32 +304,26 @@
     </div>
 
     <div class="footer">
-        <strong>SADDAM MD SADDAM</strong><br>
-        Bihar (Bhagalpur & Banka) Regional Database<br>
-        © 2026 "ONLINE KAMAI KI MASTER GUIDE" Project
+        <p><strong>SADDAM MD SADDAM</strong></p>
+        <p>Bihar (Bhagalpur & Banka) Regional Database</p>
+        <p>© 2026 "ONLINE KAMAI KI MASTER GUIDE" Project</p>
     </div>
 
-    <!-- 🤖 CHATBASE WIDGET -->
     <script>
-    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="rvom3Sd33J6zgi1Y0-9G6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-    </script>
-
-    <script>
-        // 🔎 SEARCH FUNCTION
         function filterCoins() {
             let input = document.getElementById('coinSearch').value.toLowerCase();
             let cards = document.querySelectorAll('.coin-card');
-            
+
             cards.forEach(card => {
-                let coinName = card.getAttribute('data-name');
-                let coinYear = card.getAttribute('data-year');
-                let coinMint = card.getAttribute('data-mint');
-                
+                let coinName = card.getAttribute('data-name') || '';
+                let coinYear = card.getAttribute('data-year') || '';
+                let coinMint = card.getAttribute('data-mint') || '';
+
                 let matches = 
                     coinName.includes(input) || 
                     coinYear.includes(input) || 
                     coinMint.includes(input);
-                
+
                 card.classList.toggle('hidden', !matches);
             });
         }
@@ -305,20 +331,19 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getFirestore, collection, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         const firebaseConfig = {
-            apiKey: "AIzaSyCL7WCpon9zMwXIPKXVJgmBJy5i4SAiufc",
+            apiKey: "AIzaSyCL7Wcpon9zMwXIPKXVjgmBjy5i4SAiufc",
             authDomain: "saddam-coin-bajar.firebaseapp.com",
             projectId: "saddam-coin-bajar",
-            storageBucket: "saddam-coin-bajar.firebasestorage.app",
+            storageBucket: "saddam-coin-bajar.appspot.com",
             messagingSenderId: "579582174932",
             appId: "1:579582174932:web:3f8469d68a073190f9bd41"
         };
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-
         const container = document.getElementById('coinContainer');
 
         // Real-time listener for coins
@@ -329,21 +354,20 @@
             }
 
             let html = '';
-            
             snapshot.forEach((doc) => {
                 const coin = doc.data();
                 const badgeClass = coin.tag ? 'show' : '';
-                
+
                 html += `
-                    <div class="coin-card" data-name="${coin.name.toLowerCase()}" data-year="${coin.year}" data-mint="${coin.mint.toLowerCase()}">
-                        <img src="${coin.image}" alt="${coin.name}" class="coin-image">
-                        <span class="rare-badge ${badgeClass}">${coin.tag}</span>
+                    <div class="coin-card" data-name="${(coin.name || '').toLowerCase()}" data-year="${coin.year || ''}" data-mint="${(coin.mint || '').toLowerCase()}">
+                        <img src="${coin.image || ''}" alt="${coin.name || 'Coin'}" class="coin-image">
+                        <span class="rare-badge ${badgeClass}">${coin.tag || ''}</span>
                         <div class="coin-body">
-                            <div class="coin-title">${coin.name}</div>
-                            <div class="coin-meta">Year: ${coin.year}</div>
-                            <div class="coin-meta">Mint: ${coin.mint}</div>
-                            <div class="coin-price">Kimat: ${coin.price}</div>
-                            <a href="https://wa.me/91${coin.whatsapp}?text=Hi, interested in ${coin.name}" class="btn-whatsapp">💬 Contact on WhatsApp</a>
+                            <div class="coin-title">${coin.name || 'Untitled Coin'}</div>
+                            <div class="coin-meta">Year: ${coin.year || 'N/A'}</div>
+                            <div class="coin-meta">Mint: ${coin.mint || 'N/A'}</div>
+                            <div class="coin-price">Kimat: ${coin.price || 'Contact for price'}</div>
+                            <a href="https://wa.me/917606829390?text=Hi, interested in ${encodeURIComponent(coin.name || 'this coin')}" target="_blank" class="btn-whatsapp">💬 Contact on WhatsApp</a>
                         </div>
                     </div>
                 `;
@@ -352,8 +376,26 @@
             container.innerHTML = html;
         }, (error) => {
             console.error('Error loading coins:', error);
-            container.innerHTML = '<div class="no-coins">Error loading coins. Please try again.</div>';
+            container.innerHTML = '<div class="no-coins">Error loading coins. Please try again later.</div>';
         });
     </script>
+
+    <script>
+        (function(){
+            if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+                window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};
+                window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})
+            }
+            const onLoad=function(){
+                const script=document.createElement("script");
+                script.src="https://www.chatbase.co/embed.min.js";
+                script.id="rvom3Sd33J6zgi1Y0-9G6";
+                script.domain="www.chatbase.co";
+                document.body.appendChild(script)
+            };
+            if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}
+        })();
+    </script>
+
 </body>
 </html>
