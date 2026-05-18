@@ -135,7 +135,7 @@
             transform: translateY(-2px);
         }
 
-        /* 🔥 AI ALERT BOX DESIGN */
+        /* AI ALERT BOX DESIGN */
         .ai-status-box {
             display: none;
             padding: 12px;
@@ -209,7 +209,7 @@
             <div class="form-group">
                 <label for="coinCondition">Coin Condition *</label>
                 <select id="coinCondition">
-                    <option value="UNC (Bilkul Chamचमाता Naya)">UNC (Bilkul Chamchamata Naya)</option>
+                    <option value="UNC (Bilkul Chamchamata Naya)">UNC (Bilkul Chamchamata Naya)</option>
                     <option value="Very Fine (Acchi Haalat Me)">Very Fine (Acchi Haalat Me)</option>
                     <option value="Fine (Thoda Ghisa Hua)">Fine (Thoda Ghisa Hua)</option>
                 </select>
@@ -251,7 +251,6 @@
     <a href="index.html" class="back-home">← Back to Home</a>
 
     <script>
-        // AI ब्लॉकलिस्ट वर्ड्स
         const blockListWords = ["fraud", "fake", "scam", "chutiya", "gand", "saala", "sexy", "cheat", "froot", "lutera", "loot"];
 
         function showPreview(input) {
@@ -275,7 +274,8 @@
             event.preventDefault();
 
             const shieldBox = document.getElementById('aiShieldBox');
-            const sellerName = document.getElementById('sellerName').value.toLowerCase();
+            const rawSellerName = document.getElementById('sellerName').value;
+            const sellerName = rawSellerName.toLowerCase();
             const name = document.getElementById('coinName').value.toLowerCase();
             const mint = document.getElementById('coinMint').value.toLowerCase();
             const desc = document.getElementById('coinDesc').value.toLowerCase();
@@ -285,7 +285,14 @@
             shieldBox.style.display = "block";
             shieldBox.className = "ai-status-box ai-error";
 
-            // 🔍 AI स्कैन 1: गाली और फ्रॉड शब्दों का फिल्टर (हर फील्ड में)
+            // 🔍 NEW AI नियम: नाम में नंबर होने पर रोक (e.g., 50000 को ब्लॉक करेगा)
+            const numberCheck = /\d/;
+            if (numberCheck.test(rawSellerName)) {
+                shieldBox.innerHTML = "⚠️ <b>AI Security Block:</b> Name waale box mein number daalna mana hai! Kripya apna asli naam likhein.";
+                return false;
+            }
+
+            // 🔍 AI स्कैन 1: गाली और फ्रॉड शब्दों का फिल्टर
             const fullTextContent = `${sellerName} ${name} ${mint} ${desc}`;
             for (let word of blockListWords) {
                 if (fullTextContent.includes(word)) {
@@ -294,7 +301,7 @@
                 }
             }
 
-            // 🔍 AI स्कैन 2: फर्जी और मजाक वाली भारी कीमतों पर रोक
+            // 🔍 AI स्कैन 2: फर्जी और मज़ाक वाली भारी कीमतों पर रोक
             if (price > 200000) {
                 shieldBox.innerHTML = "⚠️ <b>AI Price Block:</b> Kimat ₹2,00,000 se zyada daalna mana hai. Kripya sahi kimat bharein.";
                 return false;
