@@ -47,7 +47,6 @@
         /* 👑 SADDAM'S DAMDAAR AI CHATBOT DESIGN 👑 */
         .chat-widget { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
         
-        /* Bada aur Professional Button */
         .chat-button { background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%); color: #182848; padding: 12px 24px; border-radius: 30px; display: flex; justify-content: center; align-items: center; gap: 10px; font-weight: bold; font-size: 15px; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.3); border: 2px solid white; animation: pulse 2s infinite; }
         
         @keyframes pulse {
@@ -56,7 +55,6 @@
             100% { transform: scale(1); box-shadow: 0 6px 20px rgba(255,204,0,0.4); }
         }
 
-        /* Chat Box Design */
         .chat-box { width: 340px; height: 460px; background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); display: none; flex-direction: column; overflow: hidden; border: 2px solid #182848; position: fixed; bottom: 85px; right: 20px; }
         .chat-header { background: #182848; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #ffcc00; }
         .chat-header-title { display: flex; align-items: center; gap: 8px; font-size: 15px; }
@@ -102,7 +100,7 @@
 
     <div class="profile-section">
         <div class="profile-container">
-            <img src="https://indiancoinmarket2026.github.io/indiancoinmarket.github.io/assets/images/meri_beti.jpg" onerror="this.src='https://raw.githubusercontent.com/indiancoinmarket2026/indiancoinmarket.github.io/main/assets/images/meri_beti.jpg'" alt="Meri Beti" class="profile-img">
+            <img src="1779125244919.jpg" onerror="this.src='https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=200&q=80'" alt="Meri Beti" class="profile-img">
         </div>
         <p class="quote">"Meri beti, meri prerna"</p>
     </div>
@@ -172,7 +170,7 @@
                 <div class="msg bot">سلام بھائی! (Hello!) Main Saddam Coins Bazar ka official AI Agent hoon. Aapko kis rare sikke ki jankari chahiye? Jaise 1985 H, Vaishno Devi, ya George V? Apna sawal niche likhein!</div>
                 
                 <div class="bot-avatar-container">
-                    <img src="https://indiancoinmarket2026.github.io/indiancoinmarket.github.io/assets/images/meri_beti.jpg" onerror="this.src='https://raw.githubusercontent.com/indiancoinmarket2026/indiancoinmarket.github.io/main/assets/images/meri_beti.jpg'" alt="Beti Avatar" class="bot-avatar">
+                    <img src="1779125244919.jpg" onerror="this.src='https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=200&q=80'" alt="Beti Avatar" class="bot-avatar">
                 </div>
             </div>
             
@@ -190,7 +188,6 @@
     </footer>
 
     <script>
-        // 1. Search Filter Script
         document.getElementById('coinSearch').addEventListener('input', function(e) {
             let filter = e.target.value.toLowerCase();
             let cards = document.querySelectorAll('.coin-card');
@@ -205,7 +202,6 @@
             });
         });
 
-        // 2. Chatbot Script
         function toggleChat() {
             let chatBox = document.getElementById('chatBox');
             if (chatBox.style.display === 'none' || chatBox.style.display === '') {
@@ -215,16 +211,13 @@
             }
         }
 
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') { sendMessage(); }
-        }
+        function handleKeyPress(e) { if (e.key === 'Enter') { sendMessage(); } }
 
         function sendMessage() {
             let input = document.getElementById('chatInput');
             let text = input.value.trim();
             if (!text) return;
 
-            // User Message
             let messagesContainer = document.getElementById('chatMessages');
             let userMsg = document.createElement('div');
             userMsg.className = 'msg user';
@@ -233,7 +226,6 @@
             input.value = '';
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-            // Bot Reply Logic
             setTimeout(() => {
                 let botMsg = document.createElement('div');
                 botMsg.className = 'msg bot';
@@ -241,9 +233,9 @@
                 
                 let lowerText = text.toLowerCase();
                 if (lowerText.includes('60000') || lowerText.includes('60,000') || lowerText.includes('laakh') || lowerText.includes('kimat')) {
-                    reply = "Bhai, ₹60,000 ya laakhon ka daam sirf un coins ka hota hai jo genuine error coins ho, rare commemorative coins ho, ya proof condition mein ho. Fake high-price claims se bachna chahiye. Aap apna coin check karne ke liye WhatsApp par photo bhej सकते हैं।";
+                    reply = "Bhai, ₹60,000 ya laakhon ka daam sirf un coins ka hota hai jo genuine error coins ho, rare commemorative coins ho, ya proof condition mein ho. Fake high-price claims se bachna chahiye. Aap अपना coin check karne ke liye WhatsApp par photo bhej सकते हैं।";
                 } else if (lowerText.includes('vaishno') || lowerText.includes('devi')) {
-                    reply = "Mata Vaishno Devi ke 5 aur 10 Rupee wale sikke bhot popular hain. Humari bazar mein iski kimat condition ke hisab se ₹10,000 tak jati hai. Aapके पास कौन सा है?";
+                    reply = "Mata Vaishno Devi ke 5 aur 10 Rupee wale sikke bhot popular hain. Humari bazar mein iski kimat condition ke hisab se ₹10,000 tak jati hai. Aapके पास कौन सा hai?";
                 } else if (lowerText.includes('1985') || lowerText.includes('h mark')) {
                     reply = "1985 ka 1 Rupee ka 'H' mark (Heaton Press) wala sikka kaafi demand mein rehta hai agar wo achhi condition mein ho. Iski real market value jaanne ke liye WhatsApp par photo bhejien!";
                 }
@@ -254,6 +246,5 @@
             }, 800);
         }
     </script>
-
 </body>
 </html>
