@@ -20,7 +20,7 @@
 
         /* 🌸 PROFILE SECTION (MERI BETI) 🌸 */
         .profile-section { margin: 25px auto; text-align: center; }
-        .profile-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #ffcc00; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        .profile-img { width: 130px; height: 130px; border-radius: 50%; border: 3px solid #ffcc00; object-fit: cover; object-position: center 20%; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .quote { font-style: italic; color: #555; margin-top: 8px; font-size: 15px; font-weight: 500; }
 
         .search-container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
@@ -36,7 +36,6 @@
         .coin-body { padding: 20px; text-align: left; }
 
         .rare-badge { position: absolute; top: 10px; right: 10px; background: #ff4757; color: white; padding: 5px 10px; font-size: 11px; font-weight: bold; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .rare-badge.show { display: inline-block; }
         .coin-title { font-size: 17px; font-weight: 700; color: #333; margin-bottom: 8px; }
         .coin-meta { font-size: 13px; color: #666; margin-bottom: 5px; }
         .coin-price { font-size: 15px; color: #1b5e20; font-weight: bold; margin-bottom: 12px; }
@@ -44,15 +43,30 @@
         .btn-whatsapp { display: inline-block; width: 100%; text-align: center; padding: 10px; background: #25d366; color: white; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; transition: background 0.3s, transform 0.2s; }
         .btn-whatsapp:hover { background: #1ea84f; transform: translateY(-2px); }
 
-        footer { background: #111; color: white; text-align: center; padding: 30px 20px; margin-top: 50px; border-t: 3px solid #ffcc00; }
+        /* 💬 CHATBOT DESIGN 💬 */
+        .chat-widget { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+        .chat-button { width: 60px; height: 60px; background: #4b6cb7; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s; }
+        .chat-button:hover { transform: scale(1.1); }
+        .chat-box { width: 320px; height: 400px; background: white; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.2); display: none; flex-direction: column; overflow: hidden; border: 1px solid #ddd; }
+        .chat-header { background: #182848; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .chat-close { cursor: pointer; font-size: 20px; }
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f9f9f9; font-size: 13px; }
+        .msg { padding: 10px; border-radius: 8px; max-width: 85%; line-height: 1.4; }
+        .msg.bot { background: #eef2f5; color: #333; align-self: flex-start; }
+        .msg.user { background: #4b6cb7; color: white; align-self: flex-end; }
+        .chat-input-container { display: flex; padding: 10px; border-top: 1px solid #eee; background: white; }
+        .chat-input { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 6px; outline: none; font-size: 13px; }
+        .chat-send { background: #4b6cb7; color: white; border: none; padding: 8px 12px; margin-left: 5px; border-radius: 6px; cursor: pointer; }
+
+        footer { background: #111; color: white; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 3px solid #ffcc00; }
         footer p { margin: 8px 0; font-size: 14px; }
         footer strong { color: #ffcc00; }
-        .loading, .no-coins { text-align: center; padding: 40px 20px; color: #4b6cb7; font-size: 18px; font-weight: 600; }
 
         @media (max-width: 768px) {
             header h1 { font-size: 24px; }
             .header-buttons { position: static; margin-top: 15px; justify-content: center; }
             .btn { padding: 8px 15px; font-size: 12px; }
+            .chat-box { width: 290px; height: 380px; right: 10px; bottom: 80px; }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -69,7 +83,7 @@
     </header>
 
     <div class="profile-section">
-        <img src="https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?auto=format&fit=crop&w=150&h=150&q=80" alt="Meri Beti" class="profile-img">
+        <img src="http://googleusercontent.com/generated_image_content/0" alt="Meri Beti" class="profile-img">
         <p class="quote">"Meri beti, meri prerna"</p>
     </div>
 
@@ -121,11 +135,99 @@
 
     </div>
 
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-button" id="chatBtn" onclick="toggleChat()">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <span>🪙 Coin Expert AI Bot</span>
+                <span class="chat-close" onclick="toggleChat()">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="msg bot">Hello! Main Saddam Coins Bazar ka AI Agent hoon. Aapko kis sikke ki jankari chahiye? Jaise 1985 H, Vaishno Devi, ya George V?</div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Apna sawal likhein..." onkeypress="handleKeyPress(event)">
+                <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p><strong>SADDAM MD SADDAM</strong></p>
         <p>Bihar (Bhagalpur & Banka) Regional Database</p>
         <p style="opacity: 0.5; font-size: 11px; margin-top: 15px;">© 2026 "ONLINE KAMAI KI MASTER GUIDE" Project. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        // 1. Search Filter Script
+        document.getElementById('coinSearch').addEventListener('input', function(e) {
+            let filter = e.target.value.toLowerCase();
+            let cards = document.querySelectorAll('.coin-card');
+            cards.forEach(card => {
+                let title = card.querySelector('.coin-title').textContent.toLowerCase();
+                let meta = card.querySelector('.coin-body').textContent.toLowerCase();
+                if(title.includes(filter) || meta.includes(filter)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+
+        // 2. Chatbot Script
+        function toggleChat() {
+            let chatBox = document.getElementById('chatBox');
+            let chatBtn = document.getElementById('chatBtn');
+            if (chatBox.style.display === 'none' || chatBox.style.display === '') {
+                chatBox.style.display = 'flex';
+                chatBtn.style.display = 'none';
+            } else {
+                chatBox.style.display = 'none';
+                chatBtn.style.display = 'flex';
+            }
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') { sendMessage(); }
+        }
+
+        function sendMessage() {
+            let input = document.getElementById('chatInput');
+            let text = input.value.trim();
+            if (!text) return;
+
+            // User Message
+            let messagesContainer = document.getElementById('chatMessages');
+            let userMsg = document.createElement('div');
+            userMsg.className = 'msg user';
+            userMsg.textContent = text;
+            messagesContainer.appendChild(userMsg);
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Bot Reply Logic
+            setTimeout(() => {
+                let botMsg = document.createElement('div');
+                botMsg.className = 'msg bot';
+                let reply = "Bhai, purane coins ka daam unki condition aur rarity par depend karta hai. Agar aapke paas koi rare coin hai, toh aap upar diye gaye 'Sell Coin' form par upload karein ya seedha WhatsApp par photo bhejein!";
+                
+                let lowerText = text.toLowerCase();
+                if (lowerText.includes('60000') || lowerText.includes('60,000') || lowerText.includes('laakh') || lowerText.includes('kimat')) {
+                    reply = "Bhai, ₹60,000 ya laakhon ka daam sirf un coins ka hota hai jo genuine error coins ho, rare commemorative coins ho, ya proof condition mein ho. Fake high-price claims se bachna chahiye. Aap apna coin check karne ke liye WhatsApp par photo bhej sakte hain.";
+                } else if (lowerText.includes('vaishno') || lowerText.includes('devi')) {
+                    reply = "Mata Vaishno Devi ke 5 aur 10 Rupee wale sikke bhot popular hain. Humari bazar mein iski kimat condition ke hisab se ₹10,000 tak jati hai. Aapke paas kaun sa hai?";
+                } else if (lowerText.includes('1985') || lowerText.includes('h mark')) {
+                    reply = "1985 ka 1 Rupee ka 'H' mark (Heaton Press) wala sikka kaafi demand mein rehta hai agar wo achhi condition mein ho. Iski real market value jaanne ke liye WhatsApp par photo bhejien!";
+                }
+                
+                botMsg.textContent = reply;
+                messagesContainer.appendChild(botMsg);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 800);
+        }
+    </script>
 
 </body>
 </html>
