@@ -5,277 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SADDAM COINS BAZAR - Rare Coins Marketplace</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f5f7fa;
-        }
-
-        header {
-            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 32px;
-            margin-bottom: 5px;
-            color: #ffcc00;
-        }
-
-        header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .header-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            font-size: 14px;
-            transition: all 0.3s;
-            font-family: 'Poppins', sans-serif;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #182848;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #182848;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f5f7fa; }
+        header { background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); color: white; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        header h1 { font-size: 32px; margin-bottom: 5px; color: #ffcc00; }
+        header p { font-size: 14px; opacity: 0.9; }
+        .header-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+        .btn { padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; cursor: pointer; border: none; font-size: 14px; transition: all 0.3s; font-family: 'Poppins', sans-serif; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-primary { background: white; color: #182848; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.2); color: white; border: 2px solid white; }
+        .btn-secondary:hover { background: white; color: #182848; }
+        
         /* 🌸 PROFILE SECTION (MERI BETI) 🌸 */
-        .profile-section {
-            margin: 25px auto;
-            text-align: center;
-        }
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #ffcc00;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        .quote {
-            font-style: italic;
-            color: #555;
-            margin-top: 8px;
-            font-size: 15px;
-            font-weight: 500;
-        }
+        .profile-section { margin: 25px auto; text-align: center; }
+        .profile-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #ffcc00; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        .quote { font-style: italic; color: #555; margin-top: 8px; font-size: 15px; font-weight: 500; }
 
-        .search-container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
+        .search-container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+        .search-box { display: flex; gap: 10px; }
+        input[type="text"] { flex: 1; padding: 12px; border: 2px solid #4b6cb7; border-radius: 8px; font-size: 14px; font-family: 'Poppins', sans-serif; }
+        input[type="text"]:focus { outline: none; border-color: #ffcc00; }
 
-        .search-box {
-            display: flex;
-            gap: 10px;
-        }
-
-        input[type="text"] {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid #4b6cb7;
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #ffcc00;
-        }
-
-        .coin-container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .coin-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            position: relative;
-            border-top: 4px solid #ffcc00;
-        }
-
-        .coin-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .coin-card.hidden {
-            display: none;
-        }
-
-        .coin-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: #f0f0f0;
-        }
-
-        .coin-body {
-            padding: 20px;
-            text-align: left;
-        }
-
-        .rare-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #ff4757;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            display: none;
-        }
-
-        .rare-badge.show {
-            display: inline-block;
-        }
-
-        .coin-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .coin-meta {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .coin-price {
-            font-size: 15px;
-            color: #1b5e20;
-            font-weight: bold;
-            margin-bottom: 12px;
-            background: #e8f5e9;
-            padding: 4px 8px;
-            border-radius: 4px;
-            display: inline-block;
-        }
-
-        .btn-whatsapp {
-            display: inline-block;
-            width: 100%;
-            padding: 10px;
-            background: #25d366;
-            color: white;
-            text-align: center;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-        }
-
-        .btn-whatsapp:hover {
-            background: #1ea84f;
-            transform: translateY(-2px);
-        }
-
-        .footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-        }
-
-        .footer p {
-            margin: 8px 0;
-            font-size: 14px;
-        }
-        .footer strong {
-            color: #ffcc00;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px 20px;
-            color: #4b6cb7;
-            font-weight: 600;
-            font-size: 18px;
-            grid-column: 1 / -1;
-        }
-
-        .no-coins {
-            text-align: center;
-            padding: 40px 20px;
-            color: #999;
-            font-size: 16px;
-            grid-column: 1 / -1;
-        }
-
+        .coin-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .coin-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s; position: relative; border-top: 4px solid #ffcc00; }
+        .coin-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
+        .coin-card.hidden { display: none; }
+        .coin-image { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; }
+        .coin-body { padding: 20px; text-align: left; }
+        
+        .rare-badge { position: absolute; top: 10px; right: 10px; background: #ff4757; color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display: none; }
+        .rare-badge.show { display: inline-block; }
+        .coin-title { font-size: 17px; font-weight: 700; color: #333; margin-bottom: 8px; }
+        .coin-meta { font-size: 13px; color: #666; margin-bottom: 5px; }
+        .coin-price { font-size: 15px; color: #1b5e20; font-weight: bold; margin-bottom: 12px; background: #e8f5e9; padding: 4px 8px; border-radius: 4px; display: inline-block; }
+        
+        .btn-whatsapp { display: inline-block; width: 100%; padding: 10px; background: #25d366; color: white; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; font-family: 'Poppins', sans-serif; box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+        .btn-whatsapp:hover { background: #1ea84f; transform: translateY(-2px); }
+        
+        .footer { background: #111; color: white; text-align: center; padding: 30px 20px; margin-top: 50px; }
+        .footer p { margin: 8px 0; font-size: 14px; }
+        .footer strong { color: #ffcc00; }
+        .loading, .no-coins { text-align: center; padding: 40px 20px; color: #4b6cb7; font-weight: 600; font-size: 18px; grid-column: 1 / -1; }
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 24px;
-            }
-            .coin-container {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 15px;
-            }
-            .header-buttons {
-                gap: 8px;
-            }
-            .btn {
-                padding: 8px 16px;
-                font-size: 12px;
-            }
+            header h1 { font-size: 24px; }
+            .coin-container { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
+            .btn { padding: 8px 16px; font-size: 12px; }
         }
     </style>
 </head>
@@ -298,13 +73,15 @@
 
     <div class="search-container">
         <div class="search-box">
-            <input type="text" id="coinSearch" placeholder="Search coins... (e.g., 1985, Rupee, Rare)" onkeyup="filterCoins()">
+            <input type="text" id="coinSearch" placeholder="Search 100+ rare coins... (e.g., 1985, Victoria, H Mark)" onkeyup="filterCoins()">
         </div>
-        <p style="font-size: 12px; color: #999; margin-top: 8px;">💡 Search by name, year, or mint | Bhagalpur & Banka Regional Database</p>
+        <p style="font-size: 12px; color: #999; margin-top: 8px;">💡 Filter instantly by Name, Year, or Mint Marks</p>
     </div>
 
+    <div id="uploadStatus" style="text-align: center; font-weight: bold; color: #25d366; margin: 10px auto; font-size: 16px; background: #e8f5e9; padding: 10px; display: none;"></div>
+
     <div class="coin-container" id="coinContainer">
-        <div class="loading">Loading coins...</div>
+        <div class="loading">Loading coins from database...</div>
     </div>
 
     <div class="footer">
@@ -317,17 +94,11 @@
         function filterCoins() {
             let input = document.getElementById('coinSearch').value.toLowerCase();
             let cards = document.querySelectorAll('.coin-card');
-
             cards.forEach(card => {
-                let coinName = card.getAttribute('data-name') || '';
-                let coinYear = card.getAttribute('data-year') || '';
-                let coinMint = card.getAttribute('data-mint') || '';
-
-                let matches = 
-                    coinName.includes(input) || 
-                    coinYear.includes(input) || 
-                    coinMint.includes(input);
-
+                let name = card.getAttribute('data-name') || '';
+                let year = card.getAttribute('data-year') || '';
+                let mint = card.getAttribute('data-mint') || '';
+                let matches = name.includes(input) || year.includes(input) || mint.includes(input);
                 card.classList.toggle('hidden', !matches);
             });
         }
@@ -335,7 +106,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getFirestore, collection, onSnapshot, doc, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyCL7Wcpon9zMwXIPKXVjgmBjy5i4SAiufc",
@@ -349,11 +120,59 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const container = document.getElementById('coinContainer');
+        const statusDiv = document.getElementById('uploadStatus');
 
-        // Real-time listener for coins
+        // SAFE BULK UPLOAD FUNCTION (100 COINS GENERATOR)
+        async function checkAndAdd100Coins() {
+            const coinRef = collection(db, 'coins');
+            const snapshot = await getDocs(coinRef);
+            
+            // Check if 100 bulk coins are already loaded by tracking a flag or size
+            const checkFlag = snapshot.docs.some(d => d.id === "bulk_coin_100");
+            
+            if (!checkFlag) {
+                statusDiv.style.display = "block";
+                statusDiv.innerText = "⏳ Saddam Bhai, system aapke database mein 100 Rare Coins automatic load kar raha hai... Please thoda rukiye.";
+                
+                const mints = ['H Mint Mark', 'Star Mint Mark', 'Diamond Mint Mark', 'Bombay Mint', 'Calcutta Mint', 'Noida Mint'];
+                const categories = ['Rare 1 Rupee (H Mark)', 'One Rupee Queen Victoria', 'George V King Emperor', 'Mata Vaishno Devi Sikka', 'Chanakya Yaadgari Coin', 'Historical British India Coin', 'Rare 2 Rupees Error Sikka'];
+
+                for (let i = 1; i <= 100; i++) {
+                    let year = 1860 + (i * 1);
+                    if(year > 2026) year = 1980 + (i % 40);
+                    
+                    let cat = categories[i % categories.length];
+                    let mint = mints[i % mints.length];
+                    let isRare = (i % i == 0 && i % 4 === 0) ? "EXTREME RARE" : "RARE";
+                    let price = "₹" + (3500 + (i * 650)).toLocaleString('en-IN');
+
+                    let coinData = {
+                        name: `${cat} Edition #${i}`,
+                        year: year.toString(),
+                        mint: mint,
+                        price: price,
+                        tag: isRare,
+                        image: "https://images.unsplash.com/photo-1621972750749-0fbb1abb7736?w=500"
+                    };
+
+                    // Using specific unique bulk IDs so it NEVER overwrites your manual uploads
+                    let docId = (i === 100) ? "bulk_coin_100" : "bulk_coin_" + i;
+                    await setDoc(doc(db, "coins", docId), coinData);
+                }
+                
+                statusDiv.style.color = "#1b5e20";
+                statusDiv.innerText = "✅ Mubarak ho Saddam Bhai! 100 Rare Coins bina kisi purane data loss ke kamyabi se add ho gaye hain!";
+                setTimeout(() => { statusDiv.style.display = "none"; }, 7000);
+            }
+        }
+
+        // Trigger safe injection
+        checkAndAdd100Coins();
+
+        // Real-time listener
         onSnapshot(collection(db, 'coins'), (snapshot) => {
             if (snapshot.empty) {
-                container.innerHTML = '<div class="no-coins">No coins found. <a href="upload.html">Upload your first coin!</a></div>';
+                container.innerHTML = '<div class="no-coins">No coins found. <a href="upload.html">Upload here!</a></div>';
                 return;
             }
 
@@ -364,23 +183,19 @@
 
                 html += `
                     <div class="coin-card" data-name="${(coin.name || '').toLowerCase()}" data-year="${coin.year || ''}" data-mint="${(coin.mint || '').toLowerCase()}">
-                        <img src="${coin.image || ''}" alt="${coin.name || 'Coin'}" class="coin-image">
+                        <img src="${coin.image || 'https://images.unsplash.com/photo-1621972750749-0fbb1abb7736?w=500'}" alt="Coin" class="coin-image">
                         <span class="rare-badge ${badgeClass}">${coin.tag || ''}</span>
                         <div class="coin-body">
                             <div class="coin-title">${coin.name || 'Untitled Coin'}</div>
-                            <div class="coin-meta">Year: ${coin.year || 'N/A'}</div>
-                            <div class="coin-meta">Mint: ${coin.mint || 'N/A'}</div>
-                            <div class="coin-price">Kimat: ${coin.price || 'Contact for price'}</div>
-                            <a href="https://wa.me/917606829390?text=Hi, interested in ${encodeURIComponent(coin.name || 'this coin')}" target="_blank" class="btn-whatsapp">💬 Contact on WhatsApp</a>
+                            <div class="coin-meta">Saal: ${coin.year || 'N/A'}</div>
+                            <div class="coin-meta">Mint Mark: ${coin.mint || 'N/A'}</div>
+                            <div class="coin-price">Kimat: ${coin.price || 'Contact'}</div>
+                            <a href="https://wa.me/917606829390?text=Hi, I am interested in ${encodeURIComponent(coin.name || 'Coin')}" target="_blank" class="btn-whatsapp">💬 WhatsApp Par Baat Karein</a>
                         </div>
                     </div>
                 `;
             });
-
             container.innerHTML = html;
-        }, (error) => {
-            console.error('Error loading coins:', error);
-            container.innerHTML = '<div class="no-coins">Error loading coins. Please try again later.</div>';
         });
     </script>
 
@@ -400,6 +215,5 @@
             if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}
         })();
     </script>
-
 </body>
 </html>
