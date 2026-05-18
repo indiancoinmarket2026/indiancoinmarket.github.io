@@ -1,269 +1,359 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SADDAM COINS BAZAR</title>
+    <title>SADDAM COINS BAZAR - Rare Coins Marketplace</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-        .header {
-            background-color: #111;
-            color: #fff;
-            padding: 20px;
-        }
-        .header h1 {
-            color: #ffcc00;
-            margin: 5px 0;
-            font-size: 24px;
-            letter-spacing: 1px;
-        }
-        .subtitle {
-            color: #ffcc00;
-            font-size: 12px;
-            margin-bottom: 15px;
-        }
-        .badge-container {
-            margin-top: 10px;
-        }
-        .badge-sell {
-            background-color: #00cc66;
-            color: white;
-            padding: 6px 12px;
-            font-weight: bold;
-            border-radius: 4px;
-            text-decoration: none;
-            margin-right: 8px;
-            font-size: 13px;
-            display: inline-block;
-        }
-        .badge-blog {
-            background-color: #ff3300;
-            color: white;
-            padding: 6px 12px;
-            font-weight: bold;
-            border-radius: 4px;
-            text-decoration: none;
-            margin-right: 8px;
-            font-size: 13px;
-            display: inline-block;
-        }
-        .badge-ai {
-            background-color: #007bff;
-            color: white;
-            padding: 6px 12px;
-            font-weight: bold;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 13px;
-            display: inline-block;
-        }
-        .profile-section {
-            margin: 30px auto;
-        }
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #ffcc00;
-            object-fit: cover;
-        }
-        .quote {
-            font-style: italic;
-            color: #555;
-            margin-top: 10px;
-            font-size: 14px;
-        }
-        .search-container {
-            margin: 20px auto;
-            max-width: 90%;
-            width: 400px;
-        }
-        .search-box {
-            width: 100%;
-            padding: 12px 20px;
-            border: 1px solid #ccc;
-            border-radius: 25px;
-            font-size: 14px;
             box-sizing: border-box;
         }
-        .search-hint {
-            font-size: 11px;
-            color: #888;
-            margin-top: 5px;
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fa;
         }
-        .coin-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .search-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .coin-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
         .coin-card {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 15px;
-            width: 280px;
-            text-align: left;
-            box-sizing: border-box;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
             position: relative;
-            margin-bottom: 15px;
-            display: block; /* Khulte hi saare cards dikhenge */
         }
+
+        .coin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
         .coin-card.hidden {
-            display: none !important;
+            display: none;
         }
+
+        .coin-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #f0f0f0;
+        }
+
+        .coin-body {
+            padding: 20px;
+        }
+
         .rare-badge {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: red;
+            background: #ff4757;
             color: white;
-            font-size: 10px;
-            padding: 2px 6px;
-            font-weight: bold;
-            border-radius: 3px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: none;
         }
+
+        .rare-badge.show {
+            display: inline-block;
+        }
+
         .coin-title {
             font-size: 16px;
-            font-weight: bold;
-            margin: 5px 0;
-            color: #111;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
         }
+
         .coin-meta {
             font-size: 13px;
             color: #666;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
+
         .coin-price {
             font-size: 14px;
-            color: green;
-            font-weight: bold;
-            margin-bottom: 12px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 15px;
         }
+
         .btn-whatsapp {
-            display: block;
-            background: #ff9900;
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            background: #25d366;
             color: white;
             text-align: center;
-            padding: 10px;
-            border-radius: 20px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 13px;
-            font-weight: bold;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
         }
+
+        .btn-whatsapp:hover {
+            background: #1eaa4f;
+            transform: translateY(-2px);
+        }
+
         .footer {
-            background-color: #222;
-            color: #aaa;
-            padding: 15px;
-            font-size: 11px;
-            width: 100%;
-            box-sizing: border-box;
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
             margin-top: 50px;
         }
-        .footer strong {
-            color: #ffcc00;
+
+        .footer p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .no-coins {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .coin-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .header-buttons {
+                gap: 8px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="header">
-        <h1>SADDAM COINS BAZAR</h1>
-        <div class="subtitle">Numismatics Expert & Digital Creator</div>
-        <div class="badge-container">
-            <a href="#" class="badge-sell">Sell Coin</a>
-            <a href="#" class="badge-blog">📚 Blog</a>
-            <a href="https://www.chatbase.co/chatbot-iframe/rvom3Sd33J6zgi1Y0-9G6" target="_blank" class="badge-ai">🤖 Ask AI Bot</a>
+    <header>
+        <h1>💰 SADDAM COINS BAZAR</h1>
+        <p>Numismatics Expert & Digital Creator</p>
+        <div class="header-buttons">
+            <a href="#" class="btn btn-primary">🛍️ Browse Coins</a>
+            <a href="upload.html" class="btn btn-secondary">📤 Upload Coin</a>
+            <a href="#" class="btn btn-secondary">💬 Ask AI Bot</a>
         </div>
-    </div>
-
-    <div class="profile-section">
-        <img class="profile-img" src="https://raw.githubusercontent.com/indiancoinmarket2026/indiancoinmarket2026.github.io/main/beti.jpg" alt="Meri Beti">
-        <div class="quote">"Meri beti, meri prerna"</div>
-    </div>
+    </header>
 
     <div class="search-container">
-        <input type="text" id="coinSearch" class="search-box" onkeyup="filterCoins()" placeholder="Sikka search karein (e.g. 1985 H, Vaishno Devi)...">
-        <div class="search-hint">Login ki zarurat nahi hai. Seedha search karein.</div>
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="coinSearch" 
+                placeholder="Search coins... (e.g., 1985, Rupee, Rare)" 
+                onkeyup="filterCoins()"
+            >
+        </div>
+        <p style="font-size: 12px; color: #999; margin-top: 8px;">💡 Search by name, year, or mint</p>
     </div>
 
-    <div class="coin-container">
-        <div class="coin-card" data-name="1 rupee 1985 h mark heaton press rare">
-            <span class="rare-badge">RARE</span>
-            <div class="coin-title">1 Rupee 1985 (H Mark)</div>
-            <div class="coin-meta">Mint: Heaton Press</div>
-            <div class="coin-price">Kimat: ₹500 - ₹2,500</div>
-            <a href="https://wa.me/91XXXXXXXXXX" class="btn-whatsapp">💰 Apna Coin Beche (Sell Coin)</a>
-        </div>
-
-        <div class="coin-card" data-name="5 rupee vaishno devi multiple">
-            <div class="coin-title">5 Rupee (Vaishno Devi)</div>
-            <div class="coin-meta">Mint: Multiple</div>
-            <div class="coin-price">Kimat: ₹500 - ₹2,000</div>
-            <a href="https://wa.me/91XXXXXXXXXX" class="btn-whatsapp">💰 Apna Coin Beche (Sell Coin)</a>
-        </div>
-
-        <div class="coin-card" data-name="25 paise rhino any mint">
-            <div class="coin-title">25 Paise (Rhino)</div>
-            <div class="coin-meta">Mint: Any Mint</div>
-            <div class="coin-price">Kimat: ₹300 - ₹1,200</div>
-            <a href="https://wa.me/91XXXXXXXXXX" class="btn-whatsapp">💰 Apna Coin Beche (Sell Coin)</a>
-        </div>
+    <div class="coin-container" id="coinContainer">
+        <div class="loading">Loading coins...</div>
     </div>
 
-    <div class="footer"> <script>
-// 🔎 SEARCH FUNCTION
-function filterCoins() {
-    let input = document.getElementById('coinSearch').value.toLowerCase();
-    let cards = document.getElementsByClassName('coin-card');
-    
-    for (let i = 0; i < cards.length; i++) {
-        let coinName = cards[i].getAttribute('data-name');
-        if (coinName.includes(input)) {
-            cards[i].classList.remove('hidden');
-        } else {
-            cards[i].classList.add('hidden');
-        }
-    }
-}
-    </script>
+    <div class="footer">
+        <strong>SADDAM MD SADDAM</strong><br>
+        Bihar (Bhagalpur & Banka) Regional Database<br>
+        © 2026 "ONLINE KAMAI KI MASTER GUIDE" Project
+    </div>
+
+    <!-- 🤖 CHATBASE WIDGET -->
     <script>
-// 🔎 COINS DATA (Hardcoded - No Firebase)
-const coinsData = [
-    { name: "1 Rupee 1985 (H Mark)", mint: "Heaton Press", tag: "RARE", price: "₹500 - ₹2,500" },
-    { name: "5 Rupee (Vaishno Devi)", mint: "Multiple", tag: "", price: "₹500 - ₹2,000" },
-    { name: "25 Paise (Rhino)", mint: "Any Mint", tag: "", price: "₹300 - ₹1,200" }
-];
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="rvom3Sd33J6zgi1Y0-9G6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
 
-function loadCoins() {
-    const container = document.querySelector(".coin-container");
-    
-    coinsData.forEach((coin) => {
-        const coinHTML = `
-          <div class="coin-card" data-name="${coin.name.toLowerCase()}">
-            <span class="rare-badge">${coin.tag}</span>
-            <div class="coin-title">${coin.name}</div>
-            <div class="coin-meta">Mint: ${coin.mint}</div>
-            <div class="coin-price">Kimat: ${coin.price}</div>
-            <a href="https://wa.me/91XXXXXXXXXX" class="btn-whatsapp">💰 Apna Coin Beche</a>
-          </div>
-        `;
-        container.innerHTML += coinHTML;
-    });
-}
+    <script>
+        // 🔎 SEARCH FUNCTION
+        function filterCoins() {
+            let input = document.getElementById('coinSearch').value.toLowerCase();
+            let cards = document.querySelectorAll('.coin-card');
+            
+            cards.forEach(card => {
+                let coinName = card.getAttribute('data-name');
+                let coinYear = card.getAttribute('data-year');
+                let coinMint = card.getAttribute('data-mint');
+                
+                let matches = 
+                    coinName.includes(input) || 
+                    coinYear.includes(input) || 
+                    coinMint.includes(input);
+                
+                card.classList.toggle('hidden', !matches);
+            });
+        }
+    </script>
 
-window.addEventListener('DOMContentLoaded', loadCoins);
-    </script>    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+        const firebaseConfig = {
+            apiKey: "AIzaSyCL7WCpon9zMwXIPKXVJgmBJy5i4SAiufc",
+            authDomain: "saddam-coin-bajar.firebaseapp.com",
+            projectId: "saddam-coin-bajar",
+            storageBucket: "saddam-coin-bajar.firebasestorage.app",
+            messagingSenderId: "579582174932",
+            appId: "1:579582174932:web:3f8469d68a073190f9bd41"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const container = document.getElementById('coinContainer');
+
+        // Real-time listener for coins
+        onSnapshot(collection(db, 'coins'), (snapshot) => {
+            if (snapshot.empty) {
+                container.innerHTML = '<div class="no-coins">No coins found. <a href="upload.html">Upload your first coin!</a></div>';
+                return;
+            }
+
+            let html = '';
+            
+            snapshot.forEach((doc) => {
+                const coin = doc.data();
+                const badgeClass = coin.tag ? 'show' : '';
+                
+                html += `
+                    <div class="coin-card" data-name="${coin.name.toLowerCase()}" data-year="${coin.year}" data-mint="${coin.mint.toLowerCase()}">
+                        <img src="${coin.image}" alt="${coin.name}" class="coin-image">
+                        <span class="rare-badge ${badgeClass}">${coin.tag}</span>
+                        <div class="coin-body">
+                            <div class="coin-title">${coin.name}</div>
+                            <div class="coin-meta">Year: ${coin.year}</div>
+                            <div class="coin-meta">Mint: ${coin.mint}</div>
+                            <div class="coin-price">Kimat: ${coin.price}</div>
+                            <a href="https://wa.me/91${coin.whatsapp}?text=Hi, interested in ${coin.name}" class="btn-whatsapp">💬 Contact on WhatsApp</a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }, (error) => {
+            console.error('Error loading coins:', error);
+            container.innerHTML = '<div class="no-coins">Error loading coins. Please try again.</div>';
+        });
+    </script>
 </body>
 </html>
-
